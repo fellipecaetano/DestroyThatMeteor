@@ -9,14 +9,9 @@
 #import "GameScene.h"
 #import "Ground.h"
 #import "CannonTower.h"
+#import "Cannon.h"
 
 static NSString* TOWER_NODE = @"tower";
-
-@interface GameScene ()
-
-@property (weak, nonatomic) SKNode* selectedNode;
-
-@end
 
 @implementation GameScene
 
@@ -45,21 +40,10 @@ static NSString* TOWER_NODE = @"tower";
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    CannonTower* tower = self.cannonTower;
     UITouch* touch = touches.anyObject;
     CGPoint location = [touch locationInNode: self];
-    self.selectedNode = [self nodeAtPoint: location];
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    CannonTower* tower = self.cannonTower;
-    if ([tower nodeIsCannon: self.selectedNode]) {
-        UITouch* touch = touches.anyObject;
-        CGPoint start = [touch previousLocationInNode: self];
-        CGPoint end = [touch locationInNode: self];
-        BOOL descend = end.y < start.y;
-        CGVector translation = CGVectorMake(end.x - start.x, end.y - start.y);
-        [tower translateCannonTipWithVector: translation descend: descend];
-    }
+    [tower pointTo: location];
 }
 
 @end

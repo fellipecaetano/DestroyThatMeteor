@@ -11,6 +11,9 @@
 
 static NSString* CANNON_NODE = @"cannon";
 
+static const CGFloat LOWER_LIMIT = 0;
+static const CGFloat UPPER_LIMIT = (M_PI/3);
+
 @implementation CannonTower
 
 - (instancetype)init {
@@ -29,8 +32,14 @@ static NSString* CANNON_NODE = @"cannon";
     return (Cannon*) [self childNodeWithName: CANNON_NODE];
 }
 
-- (void)translateCannonTipWithVector:(CGVector)t descend:(BOOL)descend {
-    [self.cannon translateTipWithVector: t descend: descend];
+- (void) pointTo:(CGPoint)location {
+    CGPoint cannonPos = [self convertPoint: self.cannon.position toNode: self.scene];
+    CGFloat h = location.y - cannonPos.y;
+    CGFloat w = MAX(location.x - cannonPos.x, 1);
+    CGFloat angle = atan(h/w);
+    angle = MAX(angle, LOWER_LIMIT);
+    angle = MIN(angle, UPPER_LIMIT);
+    [self.cannon rotateToAngle: angle];
 }
 
 - (BOOL)nodeIsCannon:(SKNode *)node {

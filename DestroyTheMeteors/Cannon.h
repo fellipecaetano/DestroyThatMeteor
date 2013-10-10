@@ -10,11 +10,8 @@
 
 @interface Cannon : SKSpriteNode
 
-@property CGFloat angle;
-
 - (instancetype) init;
 
-- (void) rotateByAngle: (CGFloat) angle;
-- (void) translateTipWithVector: (CGVector) t descend: (BOOL) descend;
+- (void) rotateToAngle: (CGFloat) angle;
 
 @end

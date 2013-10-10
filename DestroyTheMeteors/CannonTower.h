@@ -16,6 +16,6 @@
 
 - (Cannon*) cannon;
 - (BOOL) nodeIsCannon: (SKNode*) node;
-- (void) translateCannonTipWithVector: (CGVector) t descend: (BOOL) descend;
+- (void) pointTo: (CGPoint) location;
 
 @end
