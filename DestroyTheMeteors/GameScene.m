@@ -10,6 +10,7 @@
 #import "Ground.h"
 #import "CannonTower.h"
 #import "Cannon.h"
+#import "Bullet.h"
 
 static NSString* TOWER_NODE = @"tower";
 
@@ -44,6 +45,7 @@ static NSString* TOWER_NODE = @"tower";
     UITouch* touch = touches.anyObject;
     CGPoint location = [touch locationInNode: self];
     [tower pointTo: location];
+    [tower fireInNode: self];
 }
 
 @end

@@ -26,6 +26,7 @@
 		B302B520180722B900CCF4B9 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B302B51F180722B900CCF4B9 /* GameScene.m */; };
 		B302B526180728A800CCF4B9 /* CannonTower.m in Sources */ = {isa = PBXBuildFile; fileRef = B302B525180728A800CCF4B9 /* CannonTower.m */; };
 		B302B52A18074ABA00CCF4B9 /* Cannon.m in Sources */ = {isa = PBXBuildFile; fileRef = B302B52818074A3C00CCF4B9 /* Cannon.m */; };
+		B39F8D2A1807783E00AF6BB3 /* Bullet.m in Sources */ = {isa = PBXBuildFile; fileRef = B39F8D291807783E00AF6BB3 /* Bullet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		B302B525180728A800CCF4B9 /* CannonTower.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CannonTower.m; sourceTree = "<group>"; };
 		B302B52718074A3C00CCF4B9 /* Cannon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cannon.h; sourceTree = "<group>"; };
 		B302B52818074A3C00CCF4B9 /* Cannon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cannon.m; sourceTree = "<group>"; };
+		B39F8D281807783E00AF6BB3 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
+		B39F8D291807783E00AF6BB3 /* Bullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bullet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +207,8 @@
 				B302B525180728A800CCF4B9 /* CannonTower.m */,
 				B302B52718074A3C00CCF4B9 /* Cannon.h */,
 				B302B52818074A3C00CCF4B9 /* Cannon.m */,
+				B39F8D281807783E00AF6BB3 /* Bullet.h */,
+				B39F8D291807783E00AF6BB3 /* Bullet.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 				B302B526180728A800CCF4B9 /* CannonTower.m in Sources */,
 				B302B51918071E4500CCF4B9 /* Ground.m in Sources */,
 				B302B52A18074ABA00CCF4B9 /* Cannon.m in Sources */,
+				B39F8D2A1807783E00AF6BB3 /* Bullet.m in Sources */,
 				B302B4EC1807176B00CCF4B9 /* AppDelegate.m in Sources */,
 				B302B520180722B900CCF4B9 /* GameScene.m in Sources */,
 				B302B5151807185A00CCF4B9 /* GameViewController.m in Sources */,
@@ -518,6 +524,7 @@
 				B302B5061807176B00CCF4B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B302B5071807176B00CCF4B9 /* Build configuration list for PBXNativeTarget "DestroyTheMeteorsTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +533,7 @@
 				B302B5091807176B00CCF4B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

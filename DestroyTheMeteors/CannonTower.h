@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@class Cannon;
+@class Cannon, Bullet;
 
 @interface CannonTower : SKSpriteNode
 
@@ -17,5 +17,6 @@
 - (Cannon*) cannon;
 - (BOOL) nodeIsCannon: (SKNode*) node;
 - (void) pointTo: (CGPoint) location;
+- (Bullet*) fireInNode: (SKNode*) node;
 
 @end

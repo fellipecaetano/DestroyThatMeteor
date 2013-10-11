@@ -1,5 +1,5 @@
 //
-//  Cannon.h
+//  Bullet.h
 //  DestroyTheMeteors
 //
 //  Created by Fellipe Caetano on 10/10/13.
@@ -8,13 +8,8 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface Cannon : SKSpriteNode
-
-@property CGFloat angle;
+@interface Bullet : SKSpriteNode
 
 - (instancetype) init;
-
-- (void) rotateToAngle: (CGFloat) angle;
-- (SKNode*) tip;
 
 @end
