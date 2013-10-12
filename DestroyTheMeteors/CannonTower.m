@@ -20,18 +20,25 @@ static const CGFloat BULLET_IMPULSE = 2;
 - (instancetype)init {
     self = [super initWithImageNamed: @"tower"];
     if (self) {
-        Cannon* cannon = [[Cannon alloc] initWithImageNamed: @"cannon"];
-        cannon.position = CGPointMake(0, 50);
-        cannon.zPosition = -1;
-        [cannon rotateToAngle: LOWER_LIMIT];
-        [self addChild: cannon];
-        
-        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
-        self.physicsBody.categoryBitMask = [self.class physicsCategory];
-        self.physicsBody.collisionBitMask = [CollisionDetection collisionBitMaskForClass: self.class];
-        self.name = [self.class nodeName];        
+        [self createCannon];
+        [self setupPhysicsBody];
     }
     return self;
+}
+
+- (void) createCannon {
+    Cannon* cannon = [[Cannon alloc] initWithImageNamed: @"cannon"];
+    cannon.position = CGPointMake(0, 50);
+    cannon.zPosition = -1;
+    [cannon rotateToAngle: LOWER_LIMIT];
+    [self addChild: cannon];
+}
+
+- (void) setupPhysicsBody {
+    self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
+    self.physicsBody.categoryBitMask = [self.class physicsCategory];
+    self.physicsBody.collisionBitMask = [CollisionDetection collisionBitMaskForClass: self.class];
+    self.name = [self.class nodeName];
 }
 
 + (NSUInteger)physicsCategory {
@@ -61,7 +68,10 @@ static const CGFloat BULLET_IMPULSE = 2;
 }
 
 - (Bullet *)fireInNode:(SKNode *)node {
-    CGPoint rotatedTip = CGPointMake(self.cannon.size.width * cosf(self.cannon.angle), self.cannon.size.width * sinf(self.cannon.angle));
+    CGPoint rotatedTip = (CGPoint) {
+        .x = self.cannon.size.width * cosf(self.cannon.angle),
+        .y = self.cannon.size.width * sinf(self.cannon.angle)
+    };
     CGPoint cannonPos = [node convertPoint: self.cannon.position fromNode: self.cannon.parent];
     CGPoint translatedTip = CGPointMake(rotatedTip.x + cannonPos.x, rotatedTip.y + cannonPos.y);
     CGPoint bulletPos = translatedTip;

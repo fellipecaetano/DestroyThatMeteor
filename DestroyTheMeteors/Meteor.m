@@ -17,16 +17,19 @@
 - (instancetype) init {
     self = [super initWithImageNamed: @"meteor"];
     if (self) {
+        self.name = [self.class nodeName];
         self.xScale = 0.5;
         self.yScale = 0.5;
-        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
-        self.physicsBody.mass = 0.0008;
-        self.physicsBody.categoryBitMask = [self.class physicsCategory];
-        self.physicsBody.contactTestBitMask = [ContactDetection contactTestBitMaskForClass: self.class];
-        self.physicsBody.collisionBitMask = [CollisionDetection collisionBitMaskForClass: self.class];
-        self.name = [self.class nodeName];
+        [self setupPhysicsBody];
     }
     return self;
+}
+
+- (void) setupPhysicsBody {
+    self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
+    self.physicsBody.categoryBitMask = [self.class physicsCategory];
+    self.physicsBody.contactTestBitMask = [ContactDetection contactTestBitMaskForClass: self.class];
+    self.physicsBody.collisionBitMask = [CollisionDetection collisionBitMaskForClass: self.class];
 }
 
 + (NSUInteger) physicsCategory {
@@ -52,8 +55,6 @@
         [fragment runAction: [SKAction fadeOutWithDuration: 0.5] completion:^{
             [fragment removeFromParent];
         }];
-        
-        angle += M_PI_4;
     }
 }
 

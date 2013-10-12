@@ -14,14 +14,18 @@
 - (instancetype) init {
     self = [super initWithImageNamed: @"meteor"];
     if (self) {
+        self.name = [self.class nodeName];
         self.xScale = 0.125;
         self.yScale = 0.125;
-        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
-        self.physicsBody.categoryBitMask = [MeteorFragment physicsCategory];
-        self.physicsBody.collisionBitMask = [CollisionDetection collisionBitMaskForClass: self.class];
-        self.name = [self.class nodeName];
+        [self setupPhysicsBody];
     }
     return self;
+}
+
+- (void) setupPhysicsBody {
+    self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
+    self.physicsBody.categoryBitMask = [MeteorFragment physicsCategory];
+    self.physicsBody.collisionBitMask = [CollisionDetection collisionBitMaskForClass: self.class];
 }
 
 + (NSUInteger)physicsCategory {

@@ -78,42 +78,37 @@
     }];
 }
 
+- (void) meteor: (Meteor*) meteor collidedWithNode: (SKNode*) node {
+    SKAction* explodeMeteor = [SKAction runBlock:^{
+        [meteor explodeInNode: self];
+        [meteor removeFromParent];
+    }];
+    [self runAction: explodeMeteor];
+}
+
+- (void) bullet: (Bullet*) bullet collidedWithNode: (SKNode*) node {
+    [bullet removeFromParent];
+}
+
 - (void)didBeginContact:(SKPhysicsContact *)contact {
-    SKPhysicsBody* firstBody;
-    SKPhysicsBody* secondBody;
-    
-    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
-        firstBody = contact.bodyA;
-        secondBody = contact.bodyB;
-    } else {
-        firstBody = contact.bodyB;
-        secondBody = contact.bodyA;
+    if (contact.bodyA.categoryBitMask == [Bullet physicsCategory]) {
+        Bullet* bullet = (Bullet*) contact.bodyA.node;
+        [self bullet: bullet collidedWithNode: contact.bodyB.node];
     }
     
-    if (firstBody.categoryBitMask == [Bullet physicsCategory]) {
-        [firstBody.node removeFromParent];
+    if (contact.bodyB.categoryBitMask == [Bullet physicsCategory]) {
+        Bullet* bullet = (Bullet*) contact.bodyB.node;
+        [self bullet: bullet collidedWithNode: contact.bodyA.node];
     }
     
-    if (secondBody.categoryBitMask == [Bullet physicsCategory]) {
-        [secondBody.node removeFromParent];
+    if (contact.bodyA.categoryBitMask == [Meteor physicsCategory]) {
+        Meteor* meteor = (Meteor*) contact.bodyA.node;
+        [self meteor: meteor collidedWithNode: contact.bodyB.node];
     }
     
-    if (firstBody.categoryBitMask == [Meteor physicsCategory]) {
-        Meteor* meteor = (Meteor*) firstBody.node;
-        SKAction* explodeMeteor = [SKAction runBlock:^{
-            [meteor explodeInNode: self];
-            [meteor removeFromParent];
-        }];
-        [self runAction: explodeMeteor];
-    }
-    
-    if (secondBody.categoryBitMask == [Meteor physicsCategory]) {
-        Meteor* meteor = (Meteor*) secondBody.node;
-        SKAction* explodeMeteor = [SKAction runBlock:^{
-            [meteor explodeInNode: self];
-            [meteor removeFromParent];
-        }];
-        [self runAction: explodeMeteor];
+    if (contact.bodyB.categoryBitMask == [Meteor physicsCategory]) {
+        Meteor* meteor = (Meteor*) contact.bodyB.node;
+        [self meteor: meteor collidedWithNode: contact.bodyB.node];
     }
 }
 
