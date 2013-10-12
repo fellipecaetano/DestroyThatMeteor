@@ -15,4 +15,14 @@
     return (((CGFloat) (arc4random() % ((unsigned) RAND_MAX + 1)) / RAND_MAX) * diff) + lower;
 }
 
++ (NSUInteger)conjunctionOfBitMasks:(NSArray *)masks {
+    NSUInteger result = 0;
+    
+    for (NSNumber* mask in masks) {
+        result |= mask.unsignedIntegerValue;
+    }
+    
+    return result;
+}
+
 @end

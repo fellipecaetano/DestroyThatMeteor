@@ -7,26 +7,29 @@
 //
 
 #import "Meteor.h"
-#import "ContactDetector.h"
+#import "ContactDetection.h"
+#import "CollisionDetection.h"
 #import "MeteorFragment.h"
 #import "MathUtils.h"
 
 @implementation Meteor
 
 - (instancetype) init {
-    self = [super initWithColor: [SKColor brownColor] size: [self.class size]];
+    self = [super initWithImageNamed: @"meteor"];
     if (self) {
+        self.size = [self.class size];        
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
         self.physicsBody.mass = 0.0008;
         self.physicsBody.categoryBitMask = [self.class physicsCategory];
-        self.physicsBody.contactTestBitMask = [ContactDetector contactTestBitMaskForClass: self.class];
+        self.physicsBody.contactTestBitMask = [ContactDetection contactTestBitMaskForClass: self.class];
+        self.physicsBody.collisionBitMask = [CollisionDetection collisionBitMaskForClass: self.class];        
         self.name = [self.class nodeName];
     }
     return self;
 }
 
 + (CGSize)size {
-    return CGSizeMake(30, 30);
+    return CGSizeMake(34, 34);
 }
 
 + (NSUInteger) physicsCategory {

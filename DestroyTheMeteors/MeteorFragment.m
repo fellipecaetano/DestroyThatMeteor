@@ -7,15 +7,17 @@
 //
 
 #import "MeteorFragment.h"
+#import "CollisionDetection.h"
 
 @implementation MeteorFragment
 
 - (instancetype) init {
-    self = [super initWithColor: [SKColor brownColor] size: CGSizeMake(10, 10)];
+    self = [super initWithImageNamed: @"meteor"];
     if (self) {
+        self.size = CGSizeMake(8, 8);        
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
-        self.physicsBody.categoryBitMask = 0;
-        self.physicsBody.collisionBitMask = 0;
+        self.physicsBody.categoryBitMask = [MeteorFragment physicsCategory];
+        self.physicsBody.collisionBitMask = [CollisionDetection collisionBitMaskForClass: self.class];
         self.name = [self.class nodeName];
     }
     return self;

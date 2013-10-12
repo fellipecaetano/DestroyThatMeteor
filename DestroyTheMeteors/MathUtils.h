@@ -11,5 +11,6 @@
 @interface MathUtils : NSObject
 
 + (CGFloat) randomNumberBetweenLowerLimit: (CGFloat) lower andUpperLimit: (CGFloat) upper;
++ (NSUInteger) conjunctionOfBitMasks: (NSArray*) masks;
 
 @end

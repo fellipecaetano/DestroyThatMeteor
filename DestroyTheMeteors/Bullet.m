@@ -7,7 +7,8 @@
 //
 
 #import "Bullet.h"
-#import "ContactDetector.h"
+#import "ContactDetection.h"
+#import "CollisionDetection.h"
 
 @implementation Bullet
 
@@ -17,7 +18,8 @@
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
         self.physicsBody.usesPreciseCollisionDetection = YES;
         self.physicsBody.categoryBitMask = [self.class physicsCategory];
-        self.physicsBody.contactTestBitMask = [ContactDetector contactTestBitMaskForClass: self.class];
+        self.physicsBody.contactTestBitMask = [ContactDetection contactTestBitMaskForClass: self.class];
+        self.physicsBody.collisionBitMask = [CollisionDetection collisionBitMaskForClass: self.class];        
         self.name = [self.class nodeName];
     }
     return self;

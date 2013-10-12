@@ -7,7 +7,8 @@
 //
 
 #import "Ground.h"
-#import "ContactDetector.h"
+#import "ContactDetection.h"
+#import "CollisionDetection.h"
 
 @implementation Ground
 
@@ -31,7 +32,8 @@
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
         self.physicsBody.dynamic = NO;
         self.physicsBody.categoryBitMask = [self.class physicsCategory];
-        self.physicsBody.contactTestBitMask = [ContactDetector contactTestBitMaskForClass: self.class];
+        self.physicsBody.contactTestBitMask = [ContactDetection contactTestBitMaskForClass: self.class];
+        self.physicsBody.collisionBitMask = [CollisionDetection collisionBitMaskForClass: self.class];
     }
     return self;
 }

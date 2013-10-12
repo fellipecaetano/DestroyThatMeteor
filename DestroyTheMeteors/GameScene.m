@@ -98,16 +98,8 @@
         [secondBody.node removeFromParent];
     }
     
-    if (firstBody.categoryBitMask == [Meteor physicsCategory] && secondBody.categoryBitMask == [Ground physicsCategory]) {
-        [firstBody.node removeFromParent];
-    }
-    
-    if (secondBody.categoryBitMask == [Meteor physicsCategory] && firstBody.categoryBitMask == [Ground physicsCategory]) {
-        [secondBody.node removeFromParent];
-    }
-    
-    if (firstBody.categoryBitMask == [Bullet physicsCategory] && secondBody.categoryBitMask == [Meteor physicsCategory]) {
-        Meteor* meteor = (Meteor*) secondBody.node;
+    if (firstBody.categoryBitMask == [Meteor physicsCategory]) {
+        Meteor* meteor = (Meteor*) firstBody.node;
         SKAction* explodeMeteor = [SKAction runBlock:^{
             [meteor explodeInNode: self];
             [meteor removeFromParent];
@@ -115,8 +107,8 @@
         [self runAction: explodeMeteor];
     }
     
-    if (secondBody.categoryBitMask == [Bullet physicsCategory] && firstBody.categoryBitMask == [Meteor physicsCategory]) {
-        Meteor* meteor = (Meteor*) firstBody.node;
+    if (secondBody.categoryBitMask == [Meteor physicsCategory]) {
+        Meteor* meteor = (Meteor*) secondBody.node;
         SKAction* explodeMeteor = [SKAction runBlock:^{
             [meteor explodeInNode: self];
             [meteor removeFromParent];

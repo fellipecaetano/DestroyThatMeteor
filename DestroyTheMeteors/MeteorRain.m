@@ -24,6 +24,10 @@
     return vector;
 }
 
+- (CGFloat) randomAngularVelocity {
+    return [MathUtils randomNumberBetweenLowerLimit: 20.0 andUpperLimit: 50.0];
+}
+
 - (CGPoint) randomPositionForMeteor: (Meteor*) meteor inScene: (SKScene*) scene {
     CGFloat lower = scene.size.width/2;
     CGFloat upper = scene.size.width - meteor.size.width - 50;
@@ -36,9 +40,11 @@
     Meteor* meteor = [[Meteor alloc] init];
     
     CGVector velocity = [self randomVelocityVector];
+    CGFloat angularVelocity = [self randomAngularVelocity];
     CGPoint position = [self randomPositionForMeteor: meteor inScene: scene];
     meteor.position = position;
     meteor.physicsBody.velocity = velocity;
+    meteor.physicsBody.angularVelocity = angularVelocity;
     return meteor;
 }
 

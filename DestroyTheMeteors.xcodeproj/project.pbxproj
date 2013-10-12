@@ -26,9 +26,10 @@
 		B302B520180722B900CCF4B9 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B302B51F180722B900CCF4B9 /* GameScene.m */; };
 		B302B526180728A800CCF4B9 /* CannonTower.m in Sources */ = {isa = PBXBuildFile; fileRef = B302B525180728A800CCF4B9 /* CannonTower.m */; };
 		B302B52A18074ABA00CCF4B9 /* Cannon.m in Sources */ = {isa = PBXBuildFile; fileRef = B302B52818074A3C00CCF4B9 /* Cannon.m */; };
-		B39B43CA1809CCFF00600C73 /* ContactDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = B39B43C91809CCFF00600C73 /* ContactDetector.m */; };
+		B39B43CA1809CCFF00600C73 /* ContactDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = B39B43C91809CCFF00600C73 /* ContactDetection.m */; };
 		B39B43CD1809DC7100600C73 /* MeteorFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = B39B43CC1809DC7100600C73 /* MeteorFragment.m */; };
 		B39B43D01809E80D00600C73 /* MathUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B39B43CF1809E80D00600C73 /* MathUtils.m */; };
+		B39B43D31809EEEB00600C73 /* CollisionDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = B39B43D21809EEEB00600C73 /* CollisionDetection.m */; };
 		B39F8D2A1807783E00AF6BB3 /* Bullet.m in Sources */ = {isa = PBXBuildFile; fileRef = B39F8D291807783E00AF6BB3 /* Bullet.m */; };
 		B3A05B92180824590022C84C /* Meteor.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A05B91180824590022C84C /* Meteor.m */; };
 		B3A05B95180825FE0022C84C /* MeteorRain.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A05B94180825FE0022C84C /* MeteorRain.m */; };
@@ -73,12 +74,14 @@
 		B302B525180728A800CCF4B9 /* CannonTower.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CannonTower.m; sourceTree = "<group>"; };
 		B302B52718074A3C00CCF4B9 /* Cannon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cannon.h; sourceTree = "<group>"; };
 		B302B52818074A3C00CCF4B9 /* Cannon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cannon.m; sourceTree = "<group>"; };
-		B39B43C81809CCFF00600C73 /* ContactDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetector.h; sourceTree = "<group>"; };
-		B39B43C91809CCFF00600C73 /* ContactDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetector.m; sourceTree = "<group>"; };
+		B39B43C81809CCFF00600C73 /* ContactDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetection.h; sourceTree = "<group>"; };
+		B39B43C91809CCFF00600C73 /* ContactDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetection.m; sourceTree = "<group>"; };
 		B39B43CB1809DC7100600C73 /* MeteorFragment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeteorFragment.h; sourceTree = "<group>"; };
 		B39B43CC1809DC7100600C73 /* MeteorFragment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeteorFragment.m; sourceTree = "<group>"; };
 		B39B43CE1809E80D00600C73 /* MathUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathUtils.h; sourceTree = "<group>"; };
 		B39B43CF1809E80D00600C73 /* MathUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathUtils.m; sourceTree = "<group>"; };
+		B39B43D11809EEEB00600C73 /* CollisionDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionDetection.h; sourceTree = "<group>"; };
+		B39B43D21809EEEB00600C73 /* CollisionDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollisionDetection.m; sourceTree = "<group>"; };
 		B39F8D281807783E00AF6BB3 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
 		B39F8D291807783E00AF6BB3 /* Bullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bullet.m; sourceTree = "<group>"; };
 		B3A05B90180824590022C84C /* Meteor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meteor.h; sourceTree = "<group>"; };
@@ -238,10 +241,12 @@
 			children = (
 				B3A05B93180825FE0022C84C /* MeteorRain.h */,
 				B3A05B94180825FE0022C84C /* MeteorRain.m */,
-				B39B43C81809CCFF00600C73 /* ContactDetector.h */,
-				B39B43C91809CCFF00600C73 /* ContactDetector.m */,
+				B39B43C81809CCFF00600C73 /* ContactDetection.h */,
+				B39B43C91809CCFF00600C73 /* ContactDetection.m */,
 				B39B43CE1809E80D00600C73 /* MathUtils.h */,
 				B39B43CF1809E80D00600C73 /* MathUtils.m */,
+				B39B43D11809EEEB00600C73 /* CollisionDetection.h */,
+				B39B43D21809EEEB00600C73 /* CollisionDetection.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -347,9 +352,10 @@
 			files = (
 				B302B526180728A800CCF4B9 /* CannonTower.m in Sources */,
 				B3A05B95180825FE0022C84C /* MeteorRain.m in Sources */,
+				B39B43D31809EEEB00600C73 /* CollisionDetection.m in Sources */,
 				B302B51918071E4500CCF4B9 /* Ground.m in Sources */,
 				B39B43CD1809DC7100600C73 /* MeteorFragment.m in Sources */,
-				B39B43CA1809CCFF00600C73 /* ContactDetector.m in Sources */,
+				B39B43CA1809CCFF00600C73 /* ContactDetection.m in Sources */,
 				B3A05B92180824590022C84C /* Meteor.m in Sources */,
 				B302B52A18074ABA00CCF4B9 /* Cannon.m in Sources */,
 				B39B43D01809E80D00600C73 /* MathUtils.m in Sources */,

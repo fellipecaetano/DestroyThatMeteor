@@ -9,6 +9,7 @@
 #import "CannonTower.h"
 #import "Cannon.h"
 #import "Bullet.h"
+#import "CollisionDetection.h"
 
 static const CGFloat LOWER_LIMIT = (M_PI/7);
 static const CGFloat UPPER_LIMIT = (M_PI/3);
@@ -27,6 +28,7 @@ static const CGFloat BULLET_IMPULSE = 1.5;
         
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
         self.physicsBody.categoryBitMask = [self.class physicsCategory];
+        self.physicsBody.collisionBitMask = [CollisionDetection collisionBitMaskForClass: self.class];
         self.name = [self.class nodeName];        
     }
     return self;

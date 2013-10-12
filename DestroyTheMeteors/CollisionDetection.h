@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ContactDetector : NSObject
+@interface CollisionDetection : NSObject
 
-+ (NSDictionary*) contactTestMap;
-+ (NSUInteger) contactTestBitMaskForClass: (Class) class;
++ (NSDictionary*) collisionMap;
++ (NSUInteger) collisionBitMaskForClass: (Class) class;
 
 @end
