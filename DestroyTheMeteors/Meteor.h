@@ -1,14 +1,14 @@
 //
-//  Bullet.h
+//  Meteor.h
 //  DestroyTheMeteors
 //
-//  Created by Fellipe Caetano on 10/10/13.
+//  Created by Fellipe Caetano on 10/11/13.
 //  Copyright (c) 2013 Dextra Sistemas. All rights reserved.
 //
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface Bullet : SKSpriteNode
+@interface Meteor : SKSpriteNode
 
 + (NSUInteger) physicsCategory;
 + (NSString*) nodeName;

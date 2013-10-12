@@ -12,6 +12,8 @@
 
 @interface CannonTower : SKSpriteNode
 
++ (NSString*) nodeName;
+
 - (instancetype) init;
 
 - (Cannon*) cannon;

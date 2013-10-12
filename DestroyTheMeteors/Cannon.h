@@ -12,9 +12,8 @@
 
 @property CGFloat angle;
 
-- (instancetype) init;
++ (NSString*) nodeName;
 
 - (void) rotateToAngle: (CGFloat) angle;
-- (SKNode*) tip;
 
 @end

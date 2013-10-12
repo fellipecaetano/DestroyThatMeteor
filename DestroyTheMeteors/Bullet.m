@@ -12,7 +12,21 @@
 
 - (instancetype)init {
     self = [super initWithColor: [SKColor blackColor] size: CGSizeMake(5, 5)];
+    if (self) {
+        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
+        self.physicsBody.usesPreciseCollisionDetection = YES;
+        self.physicsBody.categoryBitMask = [self.class physicsCategory];
+        self.name = [self.class nodeName];        
+    }
     return self;
+}
+
++ (NSString *)nodeName {
+    return @"bullet";
+}
+
++ (NSUInteger)physicsCategory {
+    return 0x1 << 2;
 }
 
 @end

@@ -11,6 +11,9 @@
 
 @interface Ground : SKSpriteNode
 
++ (NSUInteger) physicsCategory;
++ (NSString*) nodeName;
+
 - (instancetype) initWithWidth: (CGFloat) width;
 
 @end

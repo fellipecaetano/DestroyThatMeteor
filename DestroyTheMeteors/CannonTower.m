@@ -10,11 +10,9 @@
 #import "Cannon.h"
 #import "Bullet.h"
 
-static NSString* CANNON_NODE = @"cannon";
-
 static const CGFloat LOWER_LIMIT = (M_PI/7);
 static const CGFloat UPPER_LIMIT = (M_PI/3);
-static const CGFloat BULLET_IMPULSE = 900;
+static const CGFloat BULLET_IMPULSE = 1.5;
 
 @implementation CannonTower
 
@@ -22,17 +20,23 @@ static const CGFloat BULLET_IMPULSE = 900;
     self = [super initWithImageNamed: @"tower"];
     if (self) {
         Cannon* cannon = [[Cannon alloc] initWithImageNamed: @"cannon"];
-        cannon.position = CGPointMake(12, 58);
-        cannon.name = CANNON_NODE;
+        cannon.position = CGPointMake(0, 58);
         cannon.zPosition = -1;
         [cannon rotateToAngle: LOWER_LIMIT];
         [self addChild: cannon];
+        
+        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
+        self.name = [self.class nodeName];        
     }
     return self;
 }
 
++ (NSString *)nodeName {
+    return @"tower";
+}
+
 - (Cannon*) cannon {
-    return (Cannon*) [self childNodeWithName: CANNON_NODE];
+    return (Cannon*) [self childNodeWithName: [Cannon nodeName]];
 }
 
 - (void) pointTo:(CGPoint)location {
@@ -46,19 +50,24 @@ static const CGFloat BULLET_IMPULSE = 900;
 }
 
 - (BOOL)nodeIsCannon:(SKNode *)node {
-    return [node.name isEqualToString: CANNON_NODE];
+    return [node.name isEqualToString: [Cannon nodeName]];
 }
 
 - (Bullet *)fireInNode:(SKNode *)node {
-    CGPoint tip = [node convertPoint: self.cannon.tip.position fromNode: self.cannon.parent];
+    CGPoint rotatedTip = CGPointMake(self.cannon.size.width * cosf(self.cannon.angle), self.cannon.size.width * sinf(self.cannon.angle));
+    CGPoint cannonPos = [node convertPoint: self.cannon.position fromNode: self.cannon.parent];
+    CGPoint translatedTip = CGPointMake(rotatedTip.x + cannonPos.x, rotatedTip.y + cannonPos.y);
+    CGPoint bulletPos = translatedTip;
+    
     Bullet* bullet = [[Bullet alloc] init];
-    bullet.position = CGPointMake(tip.x + 25.0, tip.y + 66.0);
+    bullet.position = bulletPos;
     [node addChild: bullet];
-    bullet.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
+    
     CGVector vector = (CGVector) {
         .dx = BULLET_IMPULSE * cosf(self.cannon.angle),
         .dy = BULLET_IMPULSE * sinf(self.cannon.angle)
     };
+    
     [bullet.physicsBody applyImpulse: vector];
     return bullet;
 }

@@ -11,7 +11,7 @@
 @implementation Ground
 
 - (instancetype)initWithWidth: (CGFloat) width {
-    self = [[Ground alloc] init];
+    self = [[Ground alloc] initWithColor: [SKColor clearColor] size: CGSizeMake(width * 2, 128)];
     if (self) {
         UIImage* image = [UIImage imageNamed: @"ground"];
         SKTexture* texture = [SKTexture textureWithImage: image];
@@ -25,8 +25,21 @@
             
             x += tile.size.width;
         }
+        
+        self.name = [self.class nodeName];
+        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
+        self.physicsBody.dynamic = NO;
+        self.physicsBody.categoryBitMask = [self.class physicsCategory];
     }
     return self;
+}
+
++ (NSString *)nodeName {
+    return @"ground";
+}
+
++ (NSUInteger) physicsCategory {
+    return 0x1 << 0;
 }
 
 @end
