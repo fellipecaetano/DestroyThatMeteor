@@ -8,8 +8,6 @@
 
 #import "Cannon.h"
 
-static NSString* TIP_NODE = @"tip";
-
 @implementation Cannon
 
 - (instancetype) initWithImageNamed:(NSString *)name {
