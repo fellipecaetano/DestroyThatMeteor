@@ -12,6 +12,7 @@
 
 @interface CannonTower : SKSpriteNode
 
++ (NSUInteger) physicsCategory;
 + (NSString*) nodeName;
 
 - (instancetype) init;

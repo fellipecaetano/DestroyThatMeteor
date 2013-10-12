@@ -10,6 +10,7 @@
 
 @interface Meteor : SKSpriteNode
 
++ (CGSize) size;
 + (NSUInteger) physicsCategory;
 + (NSString*) nodeName;
 

@@ -26,9 +26,14 @@ static const CGFloat BULLET_IMPULSE = 1.5;
         [self addChild: cannon];
         
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
+        self.physicsBody.categoryBitMask = [self.class physicsCategory];
         self.name = [self.class nodeName];        
     }
     return self;
+}
+
++ (NSUInteger)physicsCategory {
+    return 0x1 << 3;
 }
 
 + (NSString *)nodeName {

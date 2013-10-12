@@ -25,10 +25,15 @@
 - (void)didMoveToView:(SKView *)view {
     self.backgroundColor = [SKColor colorWithRed: 135.0/255.0 green: 206.0/255.0 blue: 250.0/255.0 alpha: 1];
     self.scaleMode = SKSceneScaleModeAspectFit;
-    self.physicsWorld.contactDelegate = self;
+    [self setupPhysicsWorld];
     [self createScenario];
     [self createCannonTower];
     [self startMeteorRain];
+}
+
+- (void) setupPhysicsWorld {
+    self.physicsWorld.contactDelegate = self;
+    self.physicsWorld.speed = 0.7;
 }
 
 - (void) createScenario {
@@ -61,26 +66,45 @@
     [tower fireInNode: self];
 }
 
+- (void) removeNode: (SKNode*) node ifItIsOutsideOfRect: (CGRect) rect {
+    if (!CGRectContainsPoint(rect, node.position)) {
+        [node removeFromParent];
+    }
+}
+
 - (void)didSimulatePhysics {
     [self enumerateChildNodesWithName: [Bullet nodeName] usingBlock:^(SKNode *node, BOOL *stop) {
-        if (node.position.x > self.size.width || node.position.y < 0) {
-            [node removeFromParent];
-        }
+        [self removeNode: node ifItIsOutsideOfRect: self.frame];
     }];
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
-    SKNode* meteor = nil;
-    if ([contact.bodyA.node.name isEqualToString: [Ground nodeName]] && [contact.bodyB.node.name isEqualToString: [Meteor nodeName]]) {
-        meteor = contact.bodyB.node;
-    } else if ([contact.bodyA.node.name isEqualToString: [Meteor nodeName]] && [contact.bodyB.node.name isEqualToString: [Ground nodeName]]) {
-        meteor = contact.bodyA.node;
+    SKPhysicsBody* firstBody;
+    SKPhysicsBody* secondBody;
+    
+    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
+        firstBody = contact.bodyA;
+        secondBody = contact.bodyB;
+    } else {
+        firstBody = contact.bodyB;
+        secondBody = contact.bodyA;
     }
     
-    SKAction* fade = [SKAction fadeOutWithDuration: 1.0];
-    [meteor runAction: fade completion:^{
-        [meteor removeFromParent];
-    }];
+    if (firstBody.categoryBitMask & [Bullet physicsCategory]) {
+        [firstBody.node removeFromParent];
+    }
+    
+    if (secondBody.categoryBitMask & [Bullet physicsCategory]) {
+        [secondBody.node removeFromParent];
+    }
+    
+    if (firstBody.categoryBitMask & [Meteor physicsCategory] && secondBody.categoryBitMask & [Ground physicsCategory]) {
+        [firstBody.node removeFromParent];
+    }
+    
+    if (secondBody.categoryBitMask & [Meteor physicsCategory] && firstBody.categoryBitMask & [Ground physicsCategory]) {
+        [secondBody.node removeFromParent];
+    }
 }
 
 @end
