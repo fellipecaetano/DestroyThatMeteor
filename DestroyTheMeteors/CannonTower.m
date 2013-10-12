@@ -27,7 +27,7 @@ static const CGFloat BULLET_IMPULSE = 2;
 }
 
 - (void) createCannon {
-    Cannon* cannon = [[Cannon alloc] initWithImageNamed: @"cannon"];
+    Cannon* cannon = [[Cannon alloc] init];
     cannon.position = CGPointMake(0, 50);
     cannon.zPosition = -1;
     [cannon rotateToAngle: LOWER_LIMIT];

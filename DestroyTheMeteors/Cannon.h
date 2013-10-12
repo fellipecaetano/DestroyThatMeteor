@@ -14,6 +14,7 @@
 
 + (NSString*) nodeName;
 
+- (instancetype) init;
 - (void) rotateToAngle: (CGFloat) angle;
 
 @end

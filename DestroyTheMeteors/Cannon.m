@@ -10,7 +10,7 @@
 
 @implementation Cannon
 
-- (instancetype) initWithImageNamed:(NSString *)name {
+- (instancetype) init {
     self = [super initWithImageNamed: @"cannon"];
     if (self) {
         self.anchorPoint = CGPointMake(0, 0);
