@@ -8,6 +8,8 @@
 
 #import "Meteor.h"
 #import "ContactDetector.h"
+#import "MeteorFragment.h"
+#import "MathUtils.h"
 
 @implementation Meteor
 
@@ -33,6 +35,26 @@
 
 + (NSString *)nodeName {
     return @"meteor";
+}
+
+- (void)explodeInNode:(SKNode *)node {
+    NSInteger amount = 8;
+    CGFloat speed = 400.0;
+    
+    for (NSInteger i = 0; i < amount; i++) {
+        MeteorFragment* fragment = [[MeteorFragment alloc] init];
+        CGFloat angle = [MathUtils randomNumberBetweenLowerLimit: 0 andUpperLimit: 2 * M_PI];
+        CGVector velocity = CGVectorMake(speed * cosf(angle), speed * sinf(angle));
+        fragment.physicsBody.velocity = velocity;
+        fragment.position = [node convertPoint: self.position fromNode: self.parent];
+        [node addChild: fragment];
+
+        [fragment runAction: [SKAction fadeOutWithDuration: 0.5] completion:^{
+            [fragment removeFromParent];
+        }];
+        
+        angle += M_PI_4;
+    }
 }
 
 @end

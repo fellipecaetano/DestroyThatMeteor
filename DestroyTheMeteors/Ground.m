@@ -16,10 +16,10 @@
     if (self) {
         UIImage* image = [UIImage imageNamed: @"ground"];
         SKTexture* texture = [SKTexture textureWithImage: image];
-        int amount = width / texture.size.width;
-        int x = 0;
+        NSInteger amount = width / texture.size.width;
+        NSInteger x = 0;
         
-        for (int i = 0; i <= amount; i++) {
+        for (NSInteger i = 0; i <= amount; i++) {
             SKSpriteNode* tile = [[SKSpriteNode alloc] initWithTexture: texture];
             tile.position = CGPointMake(x, 0);
             [self addChild: tile];

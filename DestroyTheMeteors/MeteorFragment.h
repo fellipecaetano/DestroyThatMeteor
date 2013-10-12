@@ -1,20 +1,18 @@
 //
-//  Meteor.h
+//  MeteorFragment.h
 //  DestroyTheMeteors
 //
-//  Created by Fellipe Caetano on 10/11/13.
+//  Created by Fellipe Caetano on 10/12/13.
 //  Copyright (c) 2013 Dextra Sistemas. All rights reserved.
 //
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface Meteor : SKSpriteNode
+@interface MeteorFragment : SKSpriteNode
 
-+ (CGSize) size;
-+ (NSUInteger) physicsCategory;
 + (NSString*) nodeName;
++ (NSUInteger) physicsCategory;
 
 - (instancetype) init;
-- (void) explodeInNode: (SKNode*) node;
 
 @end
