@@ -13,8 +13,10 @@
 @implementation Bullet
 
 - (instancetype)init {
-    self = [super initWithColor: [SKColor blackColor] size: CGSizeMake(5, 5)];
+    self = [super initWithImageNamed: @"bullet"];
     if (self) {
+        self.yScale = 0.25;
+        self.xScale = 0.25;
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
         self.physicsBody.usesPreciseCollisionDetection = YES;
         self.physicsBody.categoryBitMask = [self.class physicsCategory];

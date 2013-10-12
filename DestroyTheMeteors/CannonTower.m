@@ -13,7 +13,7 @@
 
 static const CGFloat LOWER_LIMIT = (M_PI/7);
 static const CGFloat UPPER_LIMIT = (M_PI/3);
-static const CGFloat BULLET_IMPULSE = 1.5;
+static const CGFloat BULLET_IMPULSE = 2;
 
 @implementation CannonTower
 
@@ -21,7 +21,7 @@ static const CGFloat BULLET_IMPULSE = 1.5;
     self = [super initWithImageNamed: @"tower"];
     if (self) {
         Cannon* cannon = [[Cannon alloc] initWithImageNamed: @"cannon"];
-        cannon.position = CGPointMake(0, 58);
+        cannon.position = CGPointMake(0, 50);
         cannon.zPosition = -1;
         [cannon rotateToAngle: LOWER_LIMIT];
         [self addChild: cannon];
@@ -76,6 +76,7 @@ static const CGFloat BULLET_IMPULSE = 1.5;
     };
     
     [bullet.physicsBody applyImpulse: vector];
+    [bullet runAction: [SKAction rotateToAngle: self.cannon.angle duration: 0.0]];
     return bullet;
 }
 

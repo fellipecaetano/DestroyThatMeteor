@@ -17,19 +17,16 @@
 - (instancetype) init {
     self = [super initWithImageNamed: @"meteor"];
     if (self) {
-        self.size = [self.class size];        
+        self.xScale = 0.5;
+        self.yScale = 0.5;
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
         self.physicsBody.mass = 0.0008;
         self.physicsBody.categoryBitMask = [self.class physicsCategory];
         self.physicsBody.contactTestBitMask = [ContactDetection contactTestBitMaskForClass: self.class];
-        self.physicsBody.collisionBitMask = [CollisionDetection collisionBitMaskForClass: self.class];        
+        self.physicsBody.collisionBitMask = [CollisionDetection collisionBitMaskForClass: self.class];
         self.name = [self.class nodeName];
     }
     return self;
-}
-
-+ (CGSize)size {
-    return CGSizeMake(34, 34);
 }
 
 + (NSUInteger) physicsCategory {

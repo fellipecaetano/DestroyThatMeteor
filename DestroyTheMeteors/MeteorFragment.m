@@ -14,7 +14,8 @@
 - (instancetype) init {
     self = [super initWithImageNamed: @"meteor"];
     if (self) {
-        self.size = CGSizeMake(8, 8);        
+        self.xScale = 0.125;
+        self.yScale = 0.125;
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
         self.physicsBody.categoryBitMask = [MeteorFragment physicsCategory];
         self.physicsBody.collisionBitMask = [CollisionDetection collisionBitMaskForClass: self.class];
