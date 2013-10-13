@@ -13,6 +13,7 @@
 #import "Bullet.h"
 #import "Meteor.h"
 #import "MeteorRain.h"
+#import "Score.h"
 
 @interface GameScene()
 
@@ -28,6 +29,7 @@
     [self setupPhysicsWorld];
     [self createScenario];
     [self createCannonTower];
+    [self createScore];
     [self startMeteorRain];
 }
 
@@ -47,6 +49,12 @@
     CannonTower* tower = [[CannonTower alloc] init];
     tower.position = CGPointMake(80, 195);
     [self addChild: tower];
+}
+
+- (void) createScore {
+    Score* score = [[Score alloc] init];
+    score.position = CGPointMake(35, self.size.height - 90);
+    [self addChild: score];
 }
 
 - (void) startMeteorRain {

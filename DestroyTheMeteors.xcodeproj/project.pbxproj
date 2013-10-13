@@ -33,6 +33,7 @@
 		B39F8D2A1807783E00AF6BB3 /* Bullet.m in Sources */ = {isa = PBXBuildFile; fileRef = B39F8D291807783E00AF6BB3 /* Bullet.m */; };
 		B3A05B92180824590022C84C /* Meteor.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A05B91180824590022C84C /* Meteor.m */; };
 		B3A05B95180825FE0022C84C /* MeteorRain.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A05B94180825FE0022C84C /* MeteorRain.m */; };
+		B3BAC48E180B203100E48010 /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BAC48D180B203100E48010 /* Score.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,8 @@
 		B3A05B91180824590022C84C /* Meteor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meteor.m; sourceTree = "<group>"; };
 		B3A05B93180825FE0022C84C /* MeteorRain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeteorRain.h; sourceTree = "<group>"; };
 		B3A05B94180825FE0022C84C /* MeteorRain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeteorRain.m; sourceTree = "<group>"; };
+		B3BAC48C180B203100E48010 /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = "<group>"; };
+		B3BAC48D180B203100E48010 /* Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Score.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +155,7 @@
 				B39B43C71809CCEC00600C73 /* Classes */,
 				B302B4ED1807176B00CCF4B9 /* Images.xcassets */,
 				B302B50A1807178100CCF4B9 /* App Delegates */,
+				B3BAC48B180B201C00E48010 /* Nodes */,
 				B302B51618071BBF00CCF4B9 /* Sprites */,
 				B302B50C1807178D00CCF4B9 /* Scenes */,
 				B302B4E21807176B00CCF4B9 /* Supporting Files */,
@@ -249,6 +253,15 @@
 				B39B43D21809EEEB00600C73 /* CollisionDetection.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		B3BAC48B180B201C00E48010 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				B3BAC48C180B203100E48010 /* Score.h */,
+				B3BAC48D180B203100E48010 /* Score.m */,
+			);
+			name = Nodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,6 +375,7 @@
 				B39F8D2A1807783E00AF6BB3 /* Bullet.m in Sources */,
 				B302B4EC1807176B00CCF4B9 /* AppDelegate.m in Sources */,
 				B302B520180722B900CCF4B9 /* GameScene.m in Sources */,
+				B3BAC48E180B203100E48010 /* Score.m in Sources */,
 				B302B5151807185A00CCF4B9 /* GameViewController.m in Sources */,
 				B302B4E81807176B00CCF4B9 /* main.m in Sources */,
 			);
