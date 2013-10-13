@@ -11,5 +11,11 @@
 @interface Score : SKNode
 
 - (instancetype) init;
+- (NSInteger) value;
+- (void) setValue: (NSInteger) value;
+- (void) incrementByAmount: (NSInteger) increment;
+- (void) decrementByAmount: (NSInteger) decrement;
+
++ (NSString*) nodeName;
 
 @end

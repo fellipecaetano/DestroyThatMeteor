@@ -66,6 +66,10 @@
     return (CannonTower*) [self childNodeWithName: [CannonTower nodeName]];
 }
 
+- (Score*) score {
+    return (Score*) [self childNodeWithName: [Score nodeName]];
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     CannonTower* tower = self.cannonTower;
     UITouch* touch = touches.anyObject;
@@ -92,10 +96,18 @@
         [meteor removeFromParent];
     }];
     [self runAction: explodeMeteor];
+    
+    if ([node.name isEqualToString: [Ground nodeName]]) {
+        [self.score decrementByAmount: 1];
+    }
 }
 
 - (void) bullet: (Bullet*) bullet collidedWithNode: (SKNode*) node {
     [bullet removeFromParent];
+    
+    if ([node.name isEqualToString: [Meteor nodeName]]) {
+        [self.score incrementByAmount: 1];
+    }
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
@@ -116,7 +128,7 @@
     
     if (contact.bodyB.categoryBitMask == [Meteor physicsCategory]) {
         Meteor* meteor = (Meteor*) contact.bodyB.node;
-        [self meteor: meteor collidedWithNode: contact.bodyB.node];
+        [self meteor: meteor collidedWithNode: contact.bodyA.node];
     }
 }
 

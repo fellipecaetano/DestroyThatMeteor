@@ -8,6 +8,8 @@
 
 #import "Score.h"
 
+static NSString* SCORE_VALUE_NODE = @"value";
+
 @implementation Score
 
 - (instancetype)init {
@@ -17,12 +19,19 @@
         NSString* font = @"Chalkduster";
         
         SKLabelNode* label = [self createLabelWithColor: color font: font];
-        SKLabelNode* score = [self createScoreWithColor: color font: font];
+        SKLabelNode* value = [self createScoreWithColor: color font: font];
         
         [self addChild: label];
-        [self addChild: score];
+        [self addChild: value];
+        
+        self.value = 0;
+        self.name = [self.class nodeName];
     }
     return self;
+}
+
++ (NSString *)nodeName {
+    return @"score";
 }
 
 - (SKLabelNode*) createLabelWithColor: (SKColor*) color font: (NSString*) font {
@@ -38,11 +47,29 @@
 - (SKLabelNode*) createScoreWithColor: (SKColor*) color font: (NSString*) font {
     SKLabelNode* score = [[SKLabelNode alloc] initWithFontNamed: font];
     score.fontSize = 32;
-    score.text = @"0";
     score.fontColor = color;
     score.position = CGPointMake(0, 0);
     score.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    score.name = SCORE_VALUE_NODE;
     return score;
+}
+
+- (NSInteger)value {
+    SKLabelNode* valueNode = (SKLabelNode*) [self childNodeWithName: SCORE_VALUE_NODE];
+    return valueNode.text.integerValue;
+}
+
+- (void)setValue:(NSInteger)value {
+    SKLabelNode* valueNode = (SKLabelNode*) [self childNodeWithName: SCORE_VALUE_NODE];
+    valueNode.text = @(value).stringValue;
+}
+
+- (void)incrementByAmount:(NSInteger)increment {
+    self.value = self.value + increment;
+}
+
+- (void)decrementByAmount:(NSInteger)decrement {
+    self.value = self.value - decrement;
 }
 
 @end
