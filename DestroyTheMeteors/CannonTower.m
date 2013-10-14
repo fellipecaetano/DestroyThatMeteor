@@ -103,9 +103,13 @@ static const CGFloat BULLET_IMPULSE = 2;
     }
     
     NSString* firePath = [[NSBundle mainBundle] pathForResource: @"Fire" ofType: @"sks"];
-    SKEmitterNode* fire = [NSKeyedUnarchiver unarchiveObjectWithFile: firePath];
-    fire.position = self.position;
-    [node addChild: fire];
+    SKEmitterNode* fire1 = [NSKeyedUnarchiver unarchiveObjectWithFile: firePath];
+    fire1.position = CGPointMake(self.position.x - 20, self.position.y - self.size.height/2 + 10);
+    [node addChild: fire1];
+    
+    SKEmitterNode* fire2 = [NSKeyedUnarchiver unarchiveObjectWithFile: firePath];
+    fire2.position = CGPointMake(self.position.x + 20, self.position.y - self.size.height/2 + 10);
+    [node addChild: fire2];
 }
 
 @end

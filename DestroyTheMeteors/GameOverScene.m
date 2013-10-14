@@ -7,6 +7,9 @@
 //
 
 #import "GameOverScene.h"
+#import "GameScene.h"
+
+static NSString* FONT = @"Chalkduster";
 
 @implementation GameOverScene
 
@@ -17,12 +20,29 @@
 }
 
 - (void) createMessage {
-    SKLabelNode* message = [[SKLabelNode alloc] initWithFontNamed: @"Chalkduster"];
-    message.fontSize = 48;
-    message.fontColor = [SKColor blackColor];
-    message.text = @"Game Over! :(";
-    message.position = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
-    [self addChild: message];
+    SKLabelNode* mainMessage = [[SKLabelNode alloc] initWithFontNamed: @"Chalkduster"];
+    mainMessage.fontSize = 48;
+    mainMessage.fontColor = [SKColor blackColor];
+    mainMessage.text = @"Game Over! :(";
+    mainMessage.position = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds) + 32);
+    [self addChild: mainMessage];
+    
+    SKLabelNode* startAgainMessage = [[SKLabelNode alloc] initWithFontNamed: @"Chalkduster"];
+    startAgainMessage.fontSize = 20;
+    startAgainMessage.fontColor = [SKColor blackColor];
+    startAgainMessage.text = @"Tap the screen to try again.";
+    startAgainMessage.position = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds) - 32);
+    [self addChild: startAgainMessage];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    SKAction* changeScene = [SKAction runBlock:^{
+        GameScene* scene = [[GameScene alloc] initWithSize: self.size];
+        SKTransition* transition = [SKTransition doorsOpenHorizontalWithDuration: 0.4];
+        [self.view presentScene: scene transition: transition];
+    }];
+    
+    [self runAction: changeScene];
 }
 
 @end
