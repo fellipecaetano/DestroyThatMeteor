@@ -19,7 +19,7 @@
 }
 
 - (CGVector) randomVelocityVector {
-    CGFloat magnitude = [MathUtils randomNumberBetweenLowerLimit: 750.0 andUpperLimit: 1100.0];
+    CGFloat magnitude = [MathUtils randomNumberBetweenLowerLimit: 900.0 andUpperLimit: 1100.0];
     CGVector vector = CGVectorMake(-magnitude, -magnitude);
     return vector;
 }
@@ -55,7 +55,7 @@
         [scene addChild: meteor];
     }];
     
-    NSTimeInterval interval = [MathUtils randomNumberBetweenLowerLimit: 0.4 andUpperLimit: 0.8];
+    NSTimeInterval interval = [MathUtils randomNumberBetweenLowerLimit: 0.9 andUpperLimit: 1.2];
     SKAction* pause = [SKAction waitForDuration: interval];
     
     SKAction* sequence = [SKAction sequence: @[ addMeteor, pause ]];
