@@ -58,9 +58,10 @@
     NSTimeInterval interval = [MathUtils randomNumberBetweenLowerLimit: 0.9 andUpperLimit: 1.2];
     SKAction* pause = [SKAction waitForDuration: interval];
     
-    SKAction* sequence = [SKAction sequence: @[ addMeteor, pause ]];
-    SKAction* repeat = [SKAction repeatActionForever: sequence];
-    [scene runAction: repeat];
+    SKAction* rainLoop = [SKAction sequence: @[ addMeteor, pause ]];
+    SKAction* repeat = [SKAction repeatActionForever: rainLoop];
+    SKAction* sequence = [SKAction sequence: @[ [SKAction waitForDuration: 2.5], repeat]];
+    [scene runAction: sequence];
 }
 
 @end
