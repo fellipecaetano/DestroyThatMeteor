@@ -14,6 +14,7 @@
 #import "Meteor.h"
 #import "MeteorRain.h"
 #import "Score.h"
+#import "GameOverScene.h"
 
 @interface GameScene()
 
@@ -95,17 +96,24 @@
         [meteor explodeInNode: self];
         [meteor removeFromParent];
     }];
+    
     [self runAction: explodeMeteor];
     
-    if ([node.name isEqualToString: [Ground nodeName]]) {
-        [self.score decrementByAmount: 1];
+    if ([CannonTower hasTheSameNameAsNode: node]) {
+        SKAction* explodeTower = [SKAction runBlock:^{
+            [self.cannonTower explodeInNode: self];
+            [self.cannonTower removeFromParent];
+        }];
+        
+        [self runAction: explodeTower];
+        [self gameOver];
     }
 }
 
 - (void) bullet: (Bullet*) bullet collidedWithNode: (SKNode*) node {
     [bullet removeFromParent];
     
-    if ([node.name isEqualToString: [Meteor nodeName]]) {
+    if ([Meteor hasTheSameNameAsNode: node]) {
         [self.score incrementByAmount: 1];
     }
 }
@@ -130,6 +138,17 @@
         Meteor* meteor = (Meteor*) contact.bodyB.node;
         [self meteor: meteor collidedWithNode: contact.bodyA.node];
     }
+}
+
+- (void) gameOver {
+    SKAction* wait = [SKAction waitForDuration: 2.5];
+    SKAction* changeScene = [SKAction runBlock:^{
+        GameOverScene* scene = [[GameOverScene alloc] initWithSize: self.size];
+        SKTransition* transition = [SKTransition doorsCloseHorizontalWithDuration: 0.4];
+        [self.view presentScene: scene transition: transition];
+    }];
+    
+    [self runAction: [SKAction sequence: @[ wait, changeScene ]]];
 }
 
 @end

@@ -7,11 +7,9 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "Sprite.h"
 
-@interface Meteor : SKSpriteNode
-
-+ (NSUInteger) physicsCategory;
-+ (NSString*) nodeName;
+@interface Meteor : Sprite
 
 - (instancetype) init;
 - (void) explodeInNode: (SKNode*) node;

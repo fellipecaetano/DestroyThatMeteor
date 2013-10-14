@@ -10,6 +10,8 @@
 #import "Cannon.h"
 #import "Bullet.h"
 #import "CollisionDetection.h"
+#import "Debris.h"
+#import "MathUtils.h"
 
 static const CGFloat LOWER_LIMIT = (M_PI/7);
 static const CGFloat UPPER_LIMIT = (M_PI/3);
@@ -38,6 +40,7 @@ static const CGFloat BULLET_IMPULSE = 2;
     self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize: self.size];
     self.physicsBody.categoryBitMask = [self.class physicsCategory];
     self.physicsBody.collisionBitMask = [CollisionDetection collisionBitMaskForClass: self.class];
+    self.physicsBody.mass = 180000;
     self.name = [self.class nodeName];
 }
 
@@ -63,10 +66,6 @@ static const CGFloat BULLET_IMPULSE = 2;
     [self.cannon rotateToAngle: angle];
 }
 
-- (BOOL)nodeIsCannon:(SKNode *)node {
-    return [node.name isEqualToString: [Cannon nodeName]];
-}
-
 - (Bullet *)fireInNode:(SKNode *)node {
     CGPoint rotatedTip = (CGPoint) {
         .x = self.cannon.size.width * cosf(self.cannon.angle),
@@ -88,6 +87,25 @@ static const CGFloat BULLET_IMPULSE = 2;
     [bullet.physicsBody applyImpulse: vector];
     [bullet runAction: [SKAction rotateToAngle: self.cannon.angle duration: 0.0]];
     return bullet;
+}
+
+- (void) explodeInNode: (SKNode*) node {
+    NSInteger amount = 9;
+    
+    for (NSInteger i = 0; i < amount; i++) {
+        Debris* debris = [[Debris alloc] init];
+        CGFloat x = [MathUtils randomNumberBetweenLowerLimit: self.position.x andUpperLimit: self.position.x + self.size.width];
+        CGFloat y = [MathUtils randomNumberBetweenLowerLimit: self.position.y andUpperLimit: self.position.y + self.size.height];
+        CGFloat angular = [MathUtils randomNumberBetweenLowerLimit: 10.0 andUpperLimit: 35.0];
+        debris.position = CGPointMake(x, y);
+        debris.physicsBody.angularVelocity = angular;
+        [node addChild: debris];
+    }
+    
+    NSString* firePath = [[NSBundle mainBundle] pathForResource: @"Fire" ofType: @"sks"];
+    SKEmitterNode* fire = [NSKeyedUnarchiver unarchiveObjectWithFile: firePath];
+    fire.position = self.position;
+    [node addChild: fire];
 }
 
 @end

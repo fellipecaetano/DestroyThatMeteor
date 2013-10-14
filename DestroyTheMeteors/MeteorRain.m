@@ -19,7 +19,7 @@
 }
 
 - (CGVector) randomVelocityVector {
-    CGFloat magnitude = [MathUtils randomNumberBetweenLowerLimit: 300.0 andUpperLimit: 600.0];
+    CGFloat magnitude = [MathUtils randomNumberBetweenLowerLimit: 750.0 andUpperLimit: 1100.0];
     CGVector vector = CGVectorMake(-magnitude, -magnitude);
     return vector;
 }
@@ -45,6 +45,7 @@
     meteor.position = position;
     meteor.physicsBody.velocity = velocity;
     meteor.physicsBody.angularVelocity = angularVelocity;
+    
     return meteor;
 }
 

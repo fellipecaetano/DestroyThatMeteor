@@ -11,14 +11,25 @@
 #import "Bullet.h"
 #import "Meteor.h"
 #import "MathUtils.h"
+#import "CannonTower.h"
 
 @implementation ContactDetection
 
 + (NSDictionary *)contactTestMap {
     return @{
-        @"ground": @[@([Bullet physicsCategory]), @([Meteor physicsCategory])],
-        @"bullet": @[@([Ground physicsCategory]), @([Meteor physicsCategory])],
-        @"meteor": @[@([Bullet physicsCategory]), @([Ground physicsCategory])],
+        @"ground": @[
+            @([Bullet physicsCategory]),
+            @([Meteor physicsCategory])
+        ],
+        @"bullet": @[
+            @([Ground physicsCategory]),
+            @([Meteor physicsCategory])
+        ],
+        @"meteor": @[
+            @([Bullet physicsCategory]),
+            @([Ground physicsCategory]),
+            @([CannonTower physicsCategory])
+        ],
     };
 }
 

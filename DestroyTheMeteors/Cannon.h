@@ -7,12 +7,11 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "Sprite.h"
 
-@interface Cannon : SKSpriteNode
+@interface Cannon : Sprite
 
 @property CGFloat angle;
-
-+ (NSString*) nodeName;
 
 - (instancetype) init;
 - (void) rotateToAngle: (CGFloat) angle;

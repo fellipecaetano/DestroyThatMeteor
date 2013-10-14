@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B30225BF180C2C7A00258E6A /* Sprite.m in Sources */ = {isa = PBXBuildFile; fileRef = B30225BE180C2C7A00258E6A /* Sprite.m */; };
 		B302B4DC1807176B00CCF4B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B302B4DB1807176B00CCF4B9 /* Foundation.framework */; };
 		B302B4DE1807176B00CCF4B9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B302B4DD1807176B00CCF4B9 /* CoreGraphics.framework */; };
 		B302B4E01807176B00CCF4B9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B302B4DF1807176B00CCF4B9 /* UIKit.framework */; };
@@ -33,6 +34,10 @@
 		B39F8D2A1807783E00AF6BB3 /* Bullet.m in Sources */ = {isa = PBXBuildFile; fileRef = B39F8D291807783E00AF6BB3 /* Bullet.m */; };
 		B3A05B92180824590022C84C /* Meteor.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A05B91180824590022C84C /* Meteor.m */; };
 		B3A05B95180825FE0022C84C /* MeteorRain.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A05B94180825FE0022C84C /* MeteorRain.m */; };
+		B3A18029180C6E9E00794AC6 /* Debris.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A18028180C6E9E00794AC6 /* Debris.m */; };
+		B3A1802E180C76DD00794AC6 /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = B3A1802C180C76DD00794AC6 /* Fire.sks */; };
+		B3A1802F180C76DD00794AC6 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = B3A1802D180C76DD00794AC6 /* spark.png */; };
+		B3A18032180C788000794AC6 /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A18031180C788000794AC6 /* GameOverScene.m */; };
 		B3BAC48E180B203100E48010 /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BAC48D180B203100E48010 /* Score.m */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B30225BD180C2C7A00258E6A /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
+		B30225BE180C2C7A00258E6A /* Sprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sprite.m; sourceTree = "<group>"; };
+		B30225C1180C2D6400258E6A /* Exceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exceptions.h; sourceTree = "<group>"; };
 		B302B4D81807176B00CCF4B9 /* DestroyTheMeteors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DestroyTheMeteors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B302B4DB1807176B00CCF4B9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B302B4DD1807176B00CCF4B9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -89,6 +97,12 @@
 		B3A05B91180824590022C84C /* Meteor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meteor.m; sourceTree = "<group>"; };
 		B3A05B93180825FE0022C84C /* MeteorRain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeteorRain.h; sourceTree = "<group>"; };
 		B3A05B94180825FE0022C84C /* MeteorRain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeteorRain.m; sourceTree = "<group>"; };
+		B3A18027180C6E9E00794AC6 /* Debris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debris.h; sourceTree = "<group>"; };
+		B3A18028180C6E9E00794AC6 /* Debris.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debris.m; sourceTree = "<group>"; };
+		B3A1802C180C76DD00794AC6 /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
+		B3A1802D180C76DD00794AC6 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		B3A18030180C788000794AC6 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
+		B3A18031180C788000794AC6 /* GameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverScene.m; sourceTree = "<group>"; };
 		B3BAC48C180B203100E48010 /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = "<group>"; };
 		B3BAC48D180B203100E48010 /* Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Score.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +132,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B30225C0180C2D5500258E6A /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				B30225C1180C2D6400258E6A /* Exceptions.h */,
+			);
+			name = Macros;
+			sourceTree = "<group>";
+		};
 		B302B4CF1807176B00CCF4B9 = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +174,8 @@
 		B302B4E11807176B00CCF4B9 /* DestroyTheMeteors */ = {
 			isa = PBXGroup;
 			children = (
+				B3A1802A180C766F00794AC6 /* Particles */,
+				B30225C0180C2D5500258E6A /* Macros */,
 				B39B43C71809CCEC00600C73 /* Classes */,
 				B302B4ED1807176B00CCF4B9 /* Images.xcassets */,
 				B302B50A1807178100CCF4B9 /* App Delegates */,
@@ -217,6 +241,8 @@
 			children = (
 				B302B51E180722B900CCF4B9 /* GameScene.h */,
 				B302B51F180722B900CCF4B9 /* GameScene.m */,
+				B3A18030180C788000794AC6 /* GameOverScene.h */,
+				B3A18031180C788000794AC6 /* GameOverScene.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -236,6 +262,10 @@
 				B3A05B91180824590022C84C /* Meteor.m */,
 				B39B43CB1809DC7100600C73 /* MeteorFragment.h */,
 				B39B43CC1809DC7100600C73 /* MeteorFragment.m */,
+				B30225BD180C2C7A00258E6A /* Sprite.h */,
+				B30225BE180C2C7A00258E6A /* Sprite.m */,
+				B3A18027180C6E9E00794AC6 /* Debris.h */,
+				B3A18028180C6E9E00794AC6 /* Debris.m */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -253,6 +283,23 @@
 				B39B43D21809EEEB00600C73 /* CollisionDetection.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		B3A1802A180C766F00794AC6 /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				B3A1802B180C767600794AC6 /* Fire */,
+			);
+			name = Particles;
+			sourceTree = "<group>";
+		};
+		B3A1802B180C767600794AC6 /* Fire */ = {
+			isa = PBXGroup;
+			children = (
+				B3A1802C180C76DD00794AC6 /* Fire.sks */,
+				B3A1802D180C76DD00794AC6 /* spark.png */,
+			);
+			path = Fire;
 			sourceTree = "<group>";
 		};
 		B3BAC48B180B201C00E48010 /* Nodes */ = {
@@ -342,9 +389,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3A1802F180C76DD00794AC6 /* spark.png in Resources */,
 				B302B50E180717C300CCF4B9 /* MainStoryboard.storyboard in Resources */,
 				B302B4E61807176B00CCF4B9 /* InfoPlist.strings in Resources */,
 				B302B4EE1807176B00CCF4B9 /* Images.xcassets in Resources */,
+				B3A1802E180C76DD00794AC6 /* Fire.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,11 +417,14 @@
 				B39B43D31809EEEB00600C73 /* CollisionDetection.m in Sources */,
 				B302B51918071E4500CCF4B9 /* Ground.m in Sources */,
 				B39B43CD1809DC7100600C73 /* MeteorFragment.m in Sources */,
+				B3A18029180C6E9E00794AC6 /* Debris.m in Sources */,
 				B39B43CA1809CCFF00600C73 /* ContactDetection.m in Sources */,
 				B3A05B92180824590022C84C /* Meteor.m in Sources */,
 				B302B52A18074ABA00CCF4B9 /* Cannon.m in Sources */,
 				B39B43D01809E80D00600C73 /* MathUtils.m in Sources */,
+				B3A18032180C788000794AC6 /* GameOverScene.m in Sources */,
 				B39F8D2A1807783E00AF6BB3 /* Bullet.m in Sources */,
+				B30225BF180C2C7A00258E6A /* Sprite.m in Sources */,
 				B302B4EC1807176B00CCF4B9 /* AppDelegate.m in Sources */,
 				B302B520180722B900CCF4B9 /* GameScene.m in Sources */,
 				B3BAC48E180B203100E48010 /* Score.m in Sources */,

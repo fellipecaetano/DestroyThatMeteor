@@ -13,6 +13,7 @@
 #import "MeteorFragment.h"
 #import "Meteor.h"
 #import "MathUtils.h"
+#import "Debris.h"
 
 @implementation CollisionDetection
 
@@ -41,6 +42,10 @@
         ],
         @"meteorFragment": @[
             @([Ground physicsCategory]),
+        ],
+        @"debris": @[
+            @([Ground physicsCategory]),
+            @([Debris physicsCategory])
         ]
     };
 }

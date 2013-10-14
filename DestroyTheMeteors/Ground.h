@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
+#import "Sprite.h"
 
-@interface Ground : SKSpriteNode
-
-+ (NSUInteger) physicsCategory;
-+ (NSString*) nodeName;
+@interface Ground : Sprite
 
 - (instancetype) initWithWidth: (CGFloat) width;
 

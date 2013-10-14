@@ -7,19 +7,17 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "Sprite.h"
 
 @class Cannon, Bullet;
 
-@interface CannonTower : SKSpriteNode
-
-+ (NSUInteger) physicsCategory;
-+ (NSString*) nodeName;
+@interface CannonTower : Sprite
 
 - (instancetype) init;
 
 - (Cannon*) cannon;
-- (BOOL) nodeIsCannon: (SKNode*) node;
 - (void) pointTo: (CGPoint) location;
 - (Bullet*) fireInNode: (SKNode*) node;
+- (void) explodeInNode: (SKNode*) node;
 
 @end

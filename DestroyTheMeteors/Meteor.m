@@ -49,7 +49,7 @@
         CGFloat angle = [MathUtils randomNumberBetweenLowerLimit: 0 andUpperLimit: 2 * M_PI];
         CGVector velocity = CGVectorMake(speed * cosf(angle), speed * sinf(angle));
         fragment.physicsBody.velocity = velocity;
-        fragment.position = [node convertPoint: self.position fromNode: self.parent];
+        fragment.position = self.position;
         [node addChild: fragment];
 
         [fragment runAction: [SKAction fadeOutWithDuration: 0.5] completion:^{
