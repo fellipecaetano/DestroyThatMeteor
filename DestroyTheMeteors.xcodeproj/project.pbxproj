@@ -35,9 +35,10 @@
 		B3A05B92180824590022C84C /* Meteor.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A05B91180824590022C84C /* Meteor.m */; };
 		B3A05B95180825FE0022C84C /* MeteorRain.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A05B94180825FE0022C84C /* MeteorRain.m */; };
 		B3A18029180C6E9E00794AC6 /* Debris.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A18028180C6E9E00794AC6 /* Debris.m */; };
-		B3A1802E180C76DD00794AC6 /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = B3A1802C180C76DD00794AC6 /* Fire.sks */; };
+		B3A1802E180C76DD00794AC6 /* TowerArson.sks in Resources */ = {isa = PBXBuildFile; fileRef = B3A1802C180C76DD00794AC6 /* TowerArson.sks */; };
 		B3A1802F180C76DD00794AC6 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = B3A1802D180C76DD00794AC6 /* spark.png */; };
 		B3A18032180C788000794AC6 /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A18031180C788000794AC6 /* GameOverScene.m */; };
+		B3A18035180C91F500794AC6 /* TowerArson.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A18034180C91F500794AC6 /* TowerArson.m */; };
 		B3BAC48E180B203100E48010 /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BAC48D180B203100E48010 /* Score.m */; };
 /* End PBXBuildFile section */
 
@@ -99,10 +100,12 @@
 		B3A05B94180825FE0022C84C /* MeteorRain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeteorRain.m; sourceTree = "<group>"; };
 		B3A18027180C6E9E00794AC6 /* Debris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debris.h; sourceTree = "<group>"; };
 		B3A18028180C6E9E00794AC6 /* Debris.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Debris.m; sourceTree = "<group>"; };
-		B3A1802C180C76DD00794AC6 /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
+		B3A1802C180C76DD00794AC6 /* TowerArson.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TowerArson.sks; sourceTree = "<group>"; };
 		B3A1802D180C76DD00794AC6 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		B3A18030180C788000794AC6 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
 		B3A18031180C788000794AC6 /* GameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverScene.m; sourceTree = "<group>"; };
+		B3A18033180C91F500794AC6 /* TowerArson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerArson.h; sourceTree = "<group>"; };
+		B3A18034180C91F500794AC6 /* TowerArson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TowerArson.m; sourceTree = "<group>"; };
 		B3BAC48C180B203100E48010 /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = "<group>"; };
 		B3BAC48D180B203100E48010 /* Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Score.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -288,17 +291,18 @@
 		B3A1802A180C766F00794AC6 /* Particles */ = {
 			isa = PBXGroup;
 			children = (
-				B3A1802B180C767600794AC6 /* Fire */,
+				B3A1802B180C767600794AC6 /* TowerArson */,
 			);
 			name = Particles;
 			sourceTree = "<group>";
 		};
-		B3A1802B180C767600794AC6 /* Fire */ = {
+		B3A1802B180C767600794AC6 /* TowerArson */ = {
 			isa = PBXGroup;
 			children = (
-				B3A1802C180C76DD00794AC6 /* Fire.sks */,
+				B3A1802C180C76DD00794AC6 /* TowerArson.sks */,
 				B3A1802D180C76DD00794AC6 /* spark.png */,
 			);
+			name = TowerArson;
 			path = Fire;
 			sourceTree = "<group>";
 		};
@@ -307,6 +311,8 @@
 			children = (
 				B3BAC48C180B203100E48010 /* Score.h */,
 				B3BAC48D180B203100E48010 /* Score.m */,
+				B3A18033180C91F500794AC6 /* TowerArson.h */,
+				B3A18034180C91F500794AC6 /* TowerArson.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -393,7 +399,7 @@
 				B302B50E180717C300CCF4B9 /* MainStoryboard.storyboard in Resources */,
 				B302B4E61807176B00CCF4B9 /* InfoPlist.strings in Resources */,
 				B302B4EE1807176B00CCF4B9 /* Images.xcassets in Resources */,
-				B3A1802E180C76DD00794AC6 /* Fire.sks in Resources */,
+				B3A1802E180C76DD00794AC6 /* TowerArson.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +428,7 @@
 				B3A05B92180824590022C84C /* Meteor.m in Sources */,
 				B302B52A18074ABA00CCF4B9 /* Cannon.m in Sources */,
 				B39B43D01809E80D00600C73 /* MathUtils.m in Sources */,
+				B3A18035180C91F500794AC6 /* TowerArson.m in Sources */,
 				B3A18032180C788000794AC6 /* GameOverScene.m in Sources */,
 				B39F8D2A1807783E00AF6BB3 /* Bullet.m in Sources */,
 				B30225BF180C2C7A00258E6A /* Sprite.m in Sources */,

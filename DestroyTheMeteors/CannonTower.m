@@ -12,6 +12,7 @@
 #import "CollisionDetection.h"
 #import "Debris.h"
 #import "MathUtils.h"
+#import "TowerArson.h"
 
 static const CGFloat LOWER_LIMIT = (M_PI/7);
 static const CGFloat UPPER_LIMIT = (M_PI/3);
@@ -85,31 +86,30 @@ static const CGFloat BULLET_IMPULSE = 2;
     };
     
     [bullet.physicsBody applyImpulse: vector];
-    [bullet runAction: [SKAction rotateToAngle: self.cannon.angle duration: 0.0]];
     return bullet;
+}
+
+- (Debris*) randomDebrisObject {
+    Debris* debris = [[Debris alloc] init];
+    CGFloat x = [MathUtils randomNumberBetweenLowerLimit: self.position.x andUpperLimit: self.position.x + self.size.width];
+    CGFloat y = [MathUtils randomNumberBetweenLowerLimit: self.position.y andUpperLimit: self.position.y + self.size.height];
+    CGFloat angular = [MathUtils randomNumberBetweenLowerLimit: 10.0 andUpperLimit: 35.0];
+    debris.position = CGPointMake(x, y);
+    debris.physicsBody.angularVelocity = angular;
+    return debris;
 }
 
 - (void) explodeInNode: (SKNode*) node {
     NSInteger amount = 9;
     
     for (NSInteger i = 0; i < amount; i++) {
-        Debris* debris = [[Debris alloc] init];
-        CGFloat x = [MathUtils randomNumberBetweenLowerLimit: self.position.x andUpperLimit: self.position.x + self.size.width];
-        CGFloat y = [MathUtils randomNumberBetweenLowerLimit: self.position.y andUpperLimit: self.position.y + self.size.height];
-        CGFloat angular = [MathUtils randomNumberBetweenLowerLimit: 10.0 andUpperLimit: 35.0];
-        debris.position = CGPointMake(x, y);
-        debris.physicsBody.angularVelocity = angular;
+        Debris* debris = [self randomDebrisObject];
         [node addChild: debris];
     }
     
-    NSString* firePath = [[NSBundle mainBundle] pathForResource: @"Fire" ofType: @"sks"];
-    SKEmitterNode* fire1 = [NSKeyedUnarchiver unarchiveObjectWithFile: firePath];
-    fire1.position = CGPointMake(self.position.x - 20, self.position.y - self.size.height/2 + 10);
-    [node addChild: fire1];
-    
-    SKEmitterNode* fire2 = [NSKeyedUnarchiver unarchiveObjectWithFile: firePath];
-    fire2.position = CGPointMake(self.position.x + 20, self.position.y - self.size.height/2 + 10);
-    [node addChild: fire2];
+    TowerArson* arson = [TowerArson towerArson];
+    arson.position = CGPointMake(self.position.x + 15, self.position.y - 50);
+    [node addChild: arson];
 }
 
 @end
