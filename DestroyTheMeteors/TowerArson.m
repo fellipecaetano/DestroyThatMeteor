@@ -13,7 +13,7 @@
 + (TowerArson *)towerArson {
     NSString* path = [[NSBundle mainBundle] pathForResource: @"TowerArson" ofType: @"sks"];
     SKEmitterNode* arson = [NSKeyedUnarchiver unarchiveObjectWithFile: path];
-    return arson;
+    return (TowerArson*) arson;
 }
 
 @end
